@@ -84,9 +84,13 @@ The collision normal is a unit vector along the line connecting the centers. In 
 
 $$
 \mathbf n=
+$$
 \begin{bmatrix}
+$$
 (x_1-x_2)/d\\
+$$
 (y_1-y_2)/d
+$$
 \end{bmatrix}
 $$
 
