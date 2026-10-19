@@ -84,13 +84,9 @@ The collision normal is a unit vector along the line connecting the centers. In 
 
 $$
 \mathbf n=
-$$
 \begin{bmatrix}
-$$
 (x_1-x_2)/d\\
-$$
 (y_1-y_2)/d
-$$
 \end{bmatrix}
 $$
 
@@ -110,9 +106,9 @@ $$
 v_{\text{rel},n}=\mathbf v_{\text{rel}}\cdot\mathbf n
 $$
 
-- \(v_{\text{rel},n}<0\): the bodies are approaching.
-- \(v_{\text{rel},n}>0\): the bodies are separating.
-- \(v_{\text{rel},n}=0\): there is no relative motion along the normal.
+- $$\(v_{\text{rel},n}<0\)$$: the bodies are approaching.
+- $$\(v_{\text{rel},n}>0\)$$: the bodies are separating.
+- $$\(v_{\text{rel},n}=0\)$$: there is no relative motion along the normal.
 
 The impulse calculation is skipped when the bodies are separating.
 
