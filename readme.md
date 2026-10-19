@@ -120,7 +120,7 @@ $$
 \mathbf J=\Delta\mathbf p
 $$
 
-For two bodies with masses $$\(m_1\) and \(m_2\)$$, the normal impulse magnitude is
+For two bodies with masses $$\(m_1\)$$ and $$\(m_2\)$$, the normal impulse magnitude is
 
 $$
 j=-\frac{(1+e)v_{\text{rel},n}}
@@ -211,7 +211,7 @@ $$
 y=r,\qquad v_y'=e|v_y|
 $$
 
-Horizontal wall collisions similarly correct $$\(x\) and reverse \(v_x\)$$. The implementation also applies horizontal velocity damping when a ball contacts the floor.
+Horizontal wall collisions similarly correct $$\(x\)$$ and reverse $$\(v_x\)$$. The implementation also applies horizontal velocity damping when a ball contacts the floor.
 
 ## Code Structure
 
