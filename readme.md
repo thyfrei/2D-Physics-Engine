@@ -58,13 +58,13 @@ $$
 y^{\text{new}}=y^{\text{old}}+v_y^{\text{new}}\Delta t
 $$
 
-Here, \(g\) is gravitational acceleration and \(\Delta t\) is the elapsed time between updates. The simulation uses \(g=981\) pixels/s².
+Here, $$\(g\)$$ is gravitational acceleration and $$\(\Delta t\)$$ is the elapsed time between updates. The simulation uses \(g=981\) pixels/s².
 
 This is **semi-implicit Euler integration**, which updates velocity before position.
 
 ### 2. Collision Detection
 
-For two circles with centers \(P_1=(x_1,y_1)\) and \(P_2=(x_2,y_2)\), the center-to-center distance is
+For two circles with centers $$\(P_1=(x_1,y_1)\) and \(P_2=(x_2,y_2)\)$$, the center-to-center distance is
 
 $$
 d=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}
@@ -76,7 +76,7 @@ $$
 d\leq r_1+r_2
 $$
 
-where \(r_1\) and \(r_2\) are the circle radii.
+where $$\(r_1\)$$ and $$\(r_2\)$$ are the circle radii.
 
 ### 3. Collision Normal
 
