@@ -120,14 +120,14 @@ $$
 \mathbf J=\Delta\mathbf p
 $$
 
-For two bodies with masses \(m_1\) and \(m_2\), the normal impulse magnitude is
+For two bodies with masses $$\(m_1\) and \(m_2\)$$, the normal impulse magnitude is
 
 $$
 j=-\frac{(1+e)v_{\text{rel},n}}
 {\frac{1}{m_1}+\frac{1}{m_2}}
 $$
 
-where \(e\) is the coefficient of restitution.
+where $$\(e\)$$ is the coefficient of restitution.
 
 The velocities are updated as
 
@@ -168,7 +168,7 @@ $$
 p=r_1+r_2-d
 $$
 
-For \(p>0\), the bodies overlap. Define inverse masses as
+For $$\(p>0\)$$, the bodies overlap. Define inverse masses as
 
 $$
 w_1=\frac{1}{m_1},\qquad
@@ -211,7 +211,7 @@ $$
 y=r,\qquad v_y'=e|v_y|
 $$
 
-Horizontal wall collisions similarly correct \(x\) and reverse \(v_x\). The implementation also applies horizontal velocity damping when a ball contacts the floor.
+Horizontal wall collisions similarly correct $$\(x\) and reverse \(v_x\)$$. The implementation also applies horizontal velocity damping when a ball contacts the floor.
 
 ## Code Structure
 
