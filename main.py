@@ -7,9 +7,12 @@ pg.init()
 screen = pg.display.set_mode((800,600)) #(weidth, Height)
 pg.display.set_caption("Physics Engine")
 #font
-font = pg.font.Font(None, 142)
+font = pg.font.Font(None, 42)
 #clock
 clock = pg.time.Clock()
+
+button_rect = pg.Rect(325, 260, 150, 60)
+
 
 #Deceting Collision
 def checkCollision(ball_1, ball_2):
@@ -120,27 +123,52 @@ ball_2 = Ball(400, 10, 120,10,30,2)
 
 
 running = True
+simulation_started = False
 
 while running:
     dt = clock.tick(60)/1000
-    ball_1.update(dt,0.8)
-    ball_2.update(dt,0.8)
-
-    if checkCollision(ball_1, ball_2):
-            afterCollision(ball_1, ball_2, 0.8)
     
-            text = font.render("Collided" , True, (246, 2, 1))
-            screen.blit(text , (20,20))
-    
-
     for event in pg.event.get():
         if event.type == pg.QUIT: #Is the current event a request to close the window?
             running = False
+
+         # Start button click
+        if event.type == pg.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                if button_rect.collidepoint(event.pos):
+                    simulation_started = True
+                    
+    #do simulation only after click
+    if simulation_started:
+        ball_1.update(dt,0.8)
+        ball_2.update(dt,0.8)
+        
+        if checkCollision(ball_1, ball_2):
+                    afterCollision(ball_1, ball_2, 0.8)
+            
+                    text = font.render("Collided" , True, (246, 2, 1))
+                    screen.blit(text , (20,20))
 
     screen.fill((25,40,25))
     #draw balls
     pg.draw.circle(screen, (255, 0, 0), (int(ball_1.x), int(ball_1.y)), ball_1.radius)
     pg.draw.circle(screen, (255, 100, 0), (int(ball_2.x), int(ball_2.y)), ball_2.radius)
+
+    #start button page
+
+    if not simulation_started:
+        pg.draw.rect(screen, (50, 150, 80), button_rect, border_radius=10)
+
+        button_text = font.render(
+            "START", True, (255, 255, 255)
+        )
+
+        text_rect = button_text.get_rect(
+            center=button_rect.center
+        )
+
+        screen.blit(button_text, text_rect)
+
 
     pg.display.flip()
     
