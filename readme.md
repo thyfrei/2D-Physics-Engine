@@ -12,7 +12,7 @@ A 2D physics simulation built with Python and Pygame. It simulates circular bodi
 - Positional correction for overlapping bodies
 - Wall collision detection and bouncing
 
-![Physics Engine Demo](assets/balls_1.gif)
+<img src="assets/balls_1.gif" width="480" height="360" alt="Physics Engine Demo">
 
 ## Requirements
 
