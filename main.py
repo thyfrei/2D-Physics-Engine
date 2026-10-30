@@ -25,7 +25,7 @@ def checkCollision(ball_1, ball_2):
         return True
     else:
         return False
-#after collision effect
+#after collision effect, penetration, correction, impulse
 def afterCollision(ball_1 ,ball_2,e):
     dx = ball_1.x-ball_2.x
     dy = ball_1.y-ball_2.y
@@ -42,6 +42,7 @@ def afterCollision(ball_1 ,ball_2,e):
     ny = dy/dist
     penetration = ball_1.radius+ball_2.radius-dist
 
+    # penetration and correction
     if (penetration>0):
         correction = penetration/((1/ball_1.mass)+(1/ball_2.mass))
 
@@ -78,7 +79,7 @@ def afterCollision(ball_1 ,ball_2,e):
     ball_2.v_y -= (j/ball_2.mass)*ny
 
     
-#Structuring the Body (Ball)
+#Structuring the Body (Ball), update parameters
 
 class Ball():
 
@@ -118,8 +119,14 @@ class Ball():
 
 #balls
             
-ball_1 = Ball(200, 0, -500,30,10,3.5)
-ball_2 = Ball(400, 10, 120,10,30,2)
+balls = [
+    Ball(0, 0, -200, -400, 30, 5),
+    Ball(90, 50, 120, 120, 25, 2.5),
+    Ball(240, 30, 90, -100, 45, 4.5),
+    Ball(400, 70, 170, -180, 30, 5),
+    Ball(560, 0, 80, 75, 50, 7.5),
+    Ball(740, 20, -220, 250, 10, 1),
+]
 
 
 running = True
@@ -139,20 +146,42 @@ while running:
                     simulation_started = True
                     
     #do simulation only after click
-    if simulation_started:
-        ball_1.update(dt,0.8)
-        ball_2.update(dt,0.8)
+    # if simulation_started:
+    #     ball_1.update(dt,0.8)
+    #     ball_2.update(dt,0.8)
         
-        if checkCollision(ball_1, ball_2):
-                    afterCollision(ball_1, ball_2, 0.8)
+    #     if checkCollision(ball_1, ball_2):
+    #                 afterCollision(ball_1, ball_2, 0.8)
             
-                    text = font.render("Collided" , True, (246, 2, 1))
-                    screen.blit(text , (20,20))
-
+                    
     screen.fill((25,40,25))
     #draw balls
-    pg.draw.circle(screen, (255, 0, 0), (int(ball_1.x), int(ball_1.y)), ball_1.radius)
-    pg.draw.circle(screen, (255, 100, 0), (int(ball_2.x), int(ball_2.y)), ball_2.radius)
+    for ball in balls:
+        if simulation_started:
+                ball.update(dt,0.8)
+
+    for i in range (len(balls)):
+        for j in range (i+1, len(balls)):
+            ball_1 = balls[i]
+            ball_2 = balls[j]
+
+            if checkCollision(ball_1, ball_2):
+                afterCollision(ball_1, ball_2, 0.88)
+                text = font.render(f"Collided {i}&{j}" , True, (246, 2, 1))
+                screen.blit(text , (20,20))
+                            
+
+
+                
+                # if checkCollision(ball_1, ball_2):
+                #             afterCollision(ball_1, ball_2, 0.8)
+                    
+                            # text = font.render("Collided" , True, (246, 2, 1))
+                            # screen.blit(text , (20,20))
+
+    for ball in balls:
+        pg.draw.circle(screen, (255,150,0), (int(ball.x), int(ball.y)), ball.radius)
+
 
     #start button page
 
@@ -162,12 +191,16 @@ while running:
         button_text = font.render(
             "START", True, (255, 255, 255)
         )
+        values_text = font.render(
+            "e = 0.8", True, (255,255,255)
+        )
 
         text_rect = button_text.get_rect(
             center=button_rect.center
         )
 
         screen.blit(button_text, text_rect)
+        screen.blit(values_text, (20, 60))
 
 
     pg.display.flip()

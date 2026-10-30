@@ -12,7 +12,7 @@ A 2D physics simulation built with Python and Pygame. It simulates circular bodi
 - Positional correction for overlapping bodies
 - Wall collision detection and bouncing
 
-<img src="assets/balls_1.gif" width="600" height="450" alt="Physics Engine Demo">
+<img src="assets/multi_balls.gif" width="600" height="450" alt="Physics Engine Demo">
 
 ## Requirements
 
@@ -228,7 +228,6 @@ Horizontal wall collisions similarly correct $$\(x\)$$ and reverse $$\(v_x\)$$. 
 ## Limitations
 
 - Discrete collision detection can cause tunnelling at high velocities.
-- The current demonstration handles two balls rather than a general set of bodies.
 - Floor damping is a simplified approximation of friction.
 - Large time steps can reduce numerical accuracy.
 - Coincident centers require special handling because the collision normal is undefined.
